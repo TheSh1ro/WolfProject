@@ -1,3 +1,7 @@
+# Climbing Elo
+
+> Site em desenvolvimento, seu objetivo é ser uma plataforma de compra e venda de contas de League of Legends além de vender serviços de EloJob.
+
 # WolfProject
 
 This template should help get you started developing with Vue 3 in Vite.
