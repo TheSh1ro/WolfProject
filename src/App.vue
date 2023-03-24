@@ -15,6 +15,7 @@ import PageHeader from './components/PageHeader.vue'
   margin: 0px;
   text-decoration: inherit;
   color: inherit;
+  color: inherit;
 }
 #app {
   display: flex;
