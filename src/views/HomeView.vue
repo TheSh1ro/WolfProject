@@ -1,139 +1,155 @@
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {
+      boosters: [
+        {
+          name: 'Riven',
+          winrate: 100,
+          jobs: 45,
+          id: 1
+        },
+        {
+          name: 'Fiora',
+          winrate: 70,
+          jobs: 45,
+          id: 1
+        },
+        {
+          name: 'Gwen',
+          winrate: 60,
+          jobs: 45,
+          id: 1
+        },
+        {
+          name: 'Jinx',
+          winrate: 40,
+          jobs: 45,
+          id: 1
+        },
+        {
+          name: 'Aphelios',
+          winrate: 20,
+          jobs: 45,
+          id: 1
+        }
+      ]
+    }
+  }
+}
+</script>
 
 <template>
   <main id="main">
-    <div id="welcome-block">
-      <h1 class="welcome-slogan">A maior plataforma de ELOJOB do Brasil</h1>
+    <div id="bannerContainer">
+      <div class="bannerContainerTitle">A maior plataforma de ELOJOB do Brasil</div>
     </div>
-    <div id="boosters-block">
-      <div class="boosters-block-logo">
-        <img class="riven-icon" src="../assets/rivens.png" alt="" />
-        <div class="logo-text">
-          <p class="logo-half1">Climbing</p>
-          <p class="logo-half2">Elo</p>
-        </div>
+    <div id="informationContainer">
+      <div class="informationContainerVisual">
+        <img class="informationContainerIcon" src="../assets/rivens.ico" alt="" />
+        <h1 class="informationContainerTitle" style="display: flex">
+          <p>Climbing</p>
+          <p>Elo</p>
+        </h1>
       </div>
-      <h1 class="boosters-text">
+      <h1 class="informationContainerAbout">
         Temos os melhores jogadores do servidor para garantir a qualidade do serviço, assim não
         prejudicando seu MMR
       </h1>
-      <ul class="boosters-list">
-        <li class="booster-item">
+      <ul class="informationContainerList">
+        <li class="listItem" v-for="booster in boosters" :key="booster.name">
           <img
-            class="booster-icon"
+            class="boosterIcon"
             src="https://cdn.lolalytics.com/generated/champion280px/taliyah.jpg"
-            alt=""
+            alt="Imagem"
           />
-          <p class="booster-description">Warley Path</p>
-          <p>65% WR</p>
-        </li>
-        <li class="booster-item">
-          <img
-            class="booster-icon"
-            src="https://cdn.lolalytics.com/generated/champion280px/riven.jpg"
-            alt=""
-          />
-          <p class="booster-description">Aram player</p>
-          <p>76% WR</p>
-        </li>
-        <li class="booster-item">
-          <img
-            class="booster-icon"
-            src="https://cdn.lolalytics.com/generated/champion280px/fiora.jpg"
-            alt=""
-          />
-          <p class="booster-description">Felipinho</p>
-          <p>0% WR</p>
-        </li>
-        <li class="booster-item">
-          <img
-            class="booster-icon"
-            src="https://cdn.lolalytics.com/generated/champion280px/draven.jpg"
-            alt=""
-          />
-          <p class="booster-description">Gwen manca</p>
-          <p>87% WR</p>
+          <p class="boosterName">{{ booster.name }}</p>
+          <p class="boosterWinrate">{{ booster.winrate }} WR</p>
         </li>
       </ul>
     </div>
+    <div id="servicesContainer"></div>
   </main>
 </template>
 <style scoped>
 #main {
-  min-height: 90vh;
   display: flex;
   flex-direction: column;
 }
-#welcome-block {
+#bannerContainer {
   height: 90vh;
-  background-image: url(https://a-static.besthdwallpaper.com/snowmoon-caitlyn-league-of-legends-lol-wallpaper-3840x2160-103590_54.jpg);
-  background-size: cover;
-  filter: opacity(50%);
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#boosters-block {
-  display: flex;
-  flex-direction: column;
+#bannerContainer::before {
+  content: '';
+  background-image: url(https://a-static.besthdwallpaper.com/snowmoon-caitlyn-league-of-legends-lol-wallpaper-3840x2160-103590_54.jpg);
+  background-size: cover;
+  filter: opacity(50%);
+  background-position: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.bannerContainerTitle {
+  font-size: 4rem;
+  color: #a0a0a0;
+  text-shadow: 0px 0px 10px black;
+}
+#informationContainer {
   background-color: black;
-}
-.boosters-block-logo {
+  min-height: 50vh;
+  padding-block: 4vh;
+
   display: flex;
   flex-direction: column;
-}
-.logo-text {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  padding-bottom: 3vh;
+  gap: 5vh;
 }
-.riven-icon {
-  align-self: center;
+.informationContainerVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.informationContainerIcon {
   height: 20vh;
 }
-.logo-half1 {
+.informationContainerTitle > p:first-child {
   font-weight: bolder;
   color: #c869ff;
   border-bottom: 2px solid;
 }
-.logo-half2 {
+.informationContainerTitle > p:last-child {
   font-weight: bolder;
   color: #83b5ff;
   border-bottom: 2px solid;
 }
-.welcome-slogan {
-  color: white;
-  text-shadow: 0px 0px 10px black;
-  text-align: center;
-  font-size: 4rem;
-  padding-inline: 5vw;
-}
-.boosters-text {
+.informationContainerAbout {
   text-align: center;
   font-size: 1.5rem;
   padding-inline: 10vw;
 }
-.boosters-list {
+.informationContainerList {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 5vh;
 }
-.booster-item {
+.listItem {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.booster-icon {
-  width: 100px;
+.boosterIcon {
+  width: 120px;
+  margin-inline: 5px;
 }
-.booster-description {
+.boosterName {
+  color: #a0a0a0;
+  font-weight: bold;
+}
+.boosterWinrate {
+  color: #83b5ff;
+  font-weight: bold;
 }
 </style>
