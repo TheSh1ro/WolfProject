@@ -98,24 +98,24 @@ export default {
       <h1>Contas de League of Legends</h1>
     </div>
     <div id="content">
-      <div id="account-container">
-        <div class="card" v-for="conta in contas" :key="conta.id">
-          <h1 class="account-elo">{{ conta.elo }}</h1>
+      <div id="accountContainer">
+        <div class="accountCard" v-for="conta in contas" :key="conta.id">
+          <h1 class="cardElo">{{ conta.elo }}</h1>
           <img
-            class="account-image"
+            class="cardImage"
             src="https://support-leagueoflegends.riotgames.com/hc/article_attachments/4415894930323/Challenger_Emblem_2022.png"
             alt=""
           />
-          <p class="account-level">Level {{ conta.level }}</p>
-          <p class="account-info">{{ conta.essence }} EA | {{ conta.champions }} Campeões</p>
-          <span class="account-look">Skins</span>
+          <p class="cardLevel">Level {{ conta.level }}</p>
+          <p class="cardIinfo">{{ conta.essence }} EA | {{ conta.champions }} Campeões</p>
+          <span class="cardMore">Skins</span>
         </div>
-      </div>
-      <div id="navigation">
-        <ul class="navigation-buttons">
-          <li class="navigation-button">← Página anterior</li>
-          <li class="navigation-button">Próxima página →</li>
-        </ul>
+        <div id="navigation">
+          <ul class="navigation-buttons">
+            <li class="navigation-button">← Página anterior</li>
+            <li class="navigation-button">Próxima página →</li>
+          </ul>
+        </div>
       </div>
     </div>
   </main>
@@ -131,7 +131,7 @@ export default {
   content: '';
   background-image: url(../assets/rivenbg.jpg);
   background-size: cover;
-  filter: opacity(30%);
+  filter: brightness(80%);
   background-position: center;
   position: absolute;
   height: 100%;
@@ -169,7 +169,7 @@ export default {
   justify-content: center;
   padding-bottom: 2vh;
 }
-#account-container {
+#accountContainer {
   border-radius: 30px;
   padding: 6vh 5vh;
   margin-inline: 4vw;
@@ -197,28 +197,28 @@ export default {
   }
 }
 @media (max-width: 680px) {
-  #account-container > .card {
+  #account-container > .accountCard {
     width: 220px;
   }
 }
 @media (max-width: 680px) {
-  #account-container > .card {
+  #account-container > .accountCard {
     width: 220px;
   }
 }
 @media (max-width: 500px) {
-  #account-container > .card {
+  #account-container > .accountCard {
     width: 150px;
     height: 250px;
   }
-  .account-elo {
+  .cardElo {
     font-size: 1.3rem;
   }
-  .account-look {
+  .cardMore {
     font-size: 8px;
   }
 }
-.card {
+.accountCard {
   height: 350px;
   width: 250px;
 
@@ -232,29 +232,29 @@ export default {
   background-color: rgba(0, 0, 0, 0.8);
   filter: opacity(100%);
 }
-.account-image {
+.cardImage {
   height: 15vh;
 }
-.account-elo {
+.cardElo {
   color: #b983ff;
   border-bottom: 1px solid;
   font-weight: bolder;
   cursor: default;
 }
-.account-elo {
+.cardElo {
   color: #83b5ff;
   cursor: default;
 }
-.account-level {
+.cardLevel {
   color: #ffde83;
   cursor: default;
 }
-.account-info {
+.cardIinfo {
   color: #83b5ff;
   cursor: default;
   text-align: center;
 }
-.account-look {
+.cardMore {
   background-color: rgba(0, 0, 0, 0.8);
   border: 1px groove #b983ff;
   color: white;
@@ -265,7 +265,7 @@ export default {
   font-style: italic;
   cursor: pointer;
 }
-.account-look:hover {
+.cardMore:hover {
   background-color: rgba(140, 0, 255, 0.1);
 }
 #navigation {

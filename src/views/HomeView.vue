@@ -75,6 +75,7 @@ export default {
 #main {
   display: flex;
   flex-direction: column;
+  color: #83b5ff;
 }
 #bannerContainer {
   height: 90vh;
@@ -87,7 +88,7 @@ export default {
   content: '';
   background-image: url(https://a-static.besthdwallpaper.com/snowmoon-caitlyn-league-of-legends-lol-wallpaper-3840x2160-103590_54.jpg);
   background-size: cover;
-  filter: opacity(50%);
+  filter: brightness(70%);
   background-position: center;
   position: absolute;
   height: 100%;
@@ -95,8 +96,8 @@ export default {
 }
 .bannerContainerTitle {
   font-size: 4rem;
-  color: #a0a0a0;
   text-shadow: 0px 0px 10px black;
+  color: #a0a0a0;
 }
 #informationContainer {
   background-color: black;

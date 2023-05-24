@@ -28,6 +28,8 @@
 
   font-size: 1.5rem;
   border-bottom: 1px solid #83b5ff;
+  background-color: black;
+  color: #83b5ff;
 }
 .logo-area {
   display: flex;

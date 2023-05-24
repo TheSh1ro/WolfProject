@@ -17,7 +17,6 @@
   flex-direction: column;
 
   background-size: 100%;
-  filter: opacity(80%);
   background-image: url(../assets/background.jpg);
 }
 
