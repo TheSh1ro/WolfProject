@@ -1,3 +1,22 @@
+<script>
+export default {
+  data() {
+    return {
+      userExpanded: false
+    }
+  },
+  methods: {
+    userExpand() {
+      if (!this.userExpanded) {
+        this.userExpanded = true
+      }
+    },
+    userHidden() {
+      this.userExpanded = false
+    }
+  }
+}
+</script>
 <template>
   <header id="header">
     <RouterLink class="logo" to="/">
@@ -10,14 +29,22 @@
       <RouterLink class="navbar-button" to="/account">Contas</RouterLink>
       <RouterLink class="navbar-button" to="/login">Aulas</RouterLink>
     </div>
-    <div class="user">
-      <RouterLink to="/login">
-        <img
-          class="user-picture"
-          src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_640.png"
-          alt=""
-        />
-      </RouterLink>
+    <div
+      class="user"
+      :class="{ expanded: this.userExpanded }"
+      @click="userExpand()"
+      @mouseleave="userHidden()"
+    >
+      <div class="user-login">
+        <input v-show="userExpanded" type="text" placeholder="Usuário" />
+        <input v-show="userExpanded" type="text" placeholder="Senha" />
+      </div>
+      <img
+        v-show="!userExpanded"
+        class="user-picture"
+        src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_640.png"
+        alt=""
+      />
     </div>
   </header>
 </template>
@@ -35,6 +62,7 @@
   background-color: black;
   font-size: 2rem;
   position: relative;
+  color: var(--blue);
 }
 .logo {
   display: flex;
@@ -71,8 +99,9 @@
 .navbar-button:hover {
   color: var(--purple);
 }
+
 .user {
-  position: relative;
+  display: flex;
   height: 100%;
 }
 .user-picture {
@@ -83,5 +112,8 @@
 }
 .user:hover {
   color: var(--blue);
+}
+.user.expanded {
+  color: red;
 }
 </style>
