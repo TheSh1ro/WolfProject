@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import PageHeader from './components/PageHeader.vue'
 </script>
 
@@ -9,6 +9,10 @@ import PageHeader from './components/PageHeader.vue'
 </template>
 
 <style>
+:root {
+  --purple: #c869ff;
+  --blue: #83b5ff;
+}
 * {
   list-style-type: none;
   padding: 0px;
@@ -16,6 +20,9 @@ import PageHeader from './components/PageHeader.vue'
   text-decoration: inherit;
   color: inherit;
   color: inherit;
+}
+body::-webkit-scrollbar {
+  width: 0;
 }
 #app {
   display: flex;

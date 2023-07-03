@@ -1,17 +1,23 @@
 <template>
   <header id="header">
-    <RouterLink class="logo-area" to="/">
+    <RouterLink class="logo" to="/">
       <img class="logo-icon" src="../assets/rivens.png" alt="" />
-      <p class="logo-half1">Climbing</p>
-      <p class="logo-half2">Elo</p>
+      <p class="logo-text">Climbing</p>
+      <p class="logo-text">Elo</p>
     </RouterLink>
     <div class="navbar">
+      <RouterLink class="navbar-button" to="/elojob">Serviços</RouterLink>
       <RouterLink class="navbar-button" to="/account">Contas</RouterLink>
-      <RouterLink class="navbar-button" to="/elojob">EloJob</RouterLink>
-      <RouterLink class="navbar-button" to="/login">Coach</RouterLink>
+      <RouterLink class="navbar-button" to="/login">Aulas</RouterLink>
     </div>
     <div class="user">
-      <RouterLink to="/login">Login</RouterLink>
+      <RouterLink to="/login">
+        <img
+          class="user-picture"
+          src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_640.png"
+          alt=""
+        />
+      </RouterLink>
     </div>
   </header>
 </template>
@@ -19,7 +25,6 @@
 <style scoped>
 #header {
   height: 10vh;
-  padding-inline: 1.5vw;
 
   display: flex;
   flex-direction: row;
@@ -27,47 +32,56 @@
   align-items: center;
 
   font-size: 1.5rem;
-  border-bottom: 1px solid #83b5ff;
   background-color: black;
-  color: #83b5ff;
+  font-size: 2rem;
+  position: relative;
 }
-.logo-area {
+.logo {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
   cursor: pointer;
+  height: 100%;
+  padding-block: 1rem;
 }
 .logo-icon {
-  height: 8vh;
+  height: 100%;
 }
 @media (max-width: 600px) {
-  .logo-area {
-    visibility: hidden;
-    width: 0px;
+  .logo > p {
+    display: none;
   }
 }
-.logo-half1 {
-  color: #c869ff;
-  border-bottom: 1px solid;
+.logo-text:first-of-type {
+  color: var(--purple);
 }
-.logo-half2 {
-  color: #83b5ff;
-  border-bottom: 1px solid;
+.logo-text:last-of-type {
+  color: var(--blue);
 }
+
 .navbar {
   display: flex;
-  gap: 15px;
+  gap: 1rem;
 }
 .navbar-button {
-  border-radius: 4px;
-  border-bottom: 2px solid white;
-  padding-inline: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--blue);
 }
 .navbar-button:hover {
-  border-bottom: 2px solid #c869ff;
-  color: #c869ff;
+  color: var(--purple);
+}
+.user {
+  position: relative;
+  height: 100%;
+}
+.user-picture {
+  height: 100%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  filter: hue-rotate(100deg);
 }
 .user:hover {
-  color: #83b5ff;
+  color: var(--blue);
 }
 </style>
