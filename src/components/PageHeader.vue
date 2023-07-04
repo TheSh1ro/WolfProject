@@ -3,8 +3,13 @@ export default {
   data() {
     return {
       userExpanded: false,
-      userLogin: null,
-      userPassword: null
+      inputLogin: null,
+      inputPassword: null,
+      user: {
+        login: null,
+        password: null,
+        logged: false
+      }
     }
   },
   methods: {
@@ -15,7 +20,19 @@ export default {
     },
     userHidden() {
       this.userExpanded = false
+      this.inputLogin = null
+      this.inputPassword = null
+    },
+    submit(event) {
+      if (event.code == 'Enter' && this.inputLogin && this.inputPassword) {
+        this.user.login = this.inputLogin
+        this.user.password = this.inputPassword
+        this.user.logged = true
+      }
     }
+  },
+  onMounted () {
+    
   }
 }
 </script>
@@ -33,9 +50,12 @@ export default {
       @mouseleave="userHidden()"
     >
       <img class="user-picture" src="https://cdn.onlinewebfonts.com/svg/img_454474.png" alt="" />
-      <div class="login-inputs">
-        <input class="login-input" type="text" placeholder="Usuário" v-model="userLogin" />
-        <input class="login-input" type="text" placeholder="Senha" v-model="userPassword" />
+      <div class="login-inputs" @keypress="submit" v-show="!user.logged">
+        <input class="login-input" type="text" placeholder="Usuário" v-model="inputLogin" />
+        <input class="login-input" type="text" placeholder="Senha" v-model="inputPassword" />
+      </div>
+      <div class="user-name" v-show="user.logged">
+        <p>{{ user.login }}</p>
       </div>
     </div>
   </header>
@@ -91,7 +111,8 @@ export default {
   gap: 10px;
 
   background: radial-gradient(circle, rgba(200, 105, 255, 1) 0%, rgba(131, 181, 255, 1) 100%);
-  transition: 0.5s ease;
+  color: black;
+  transition: 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -111,13 +132,13 @@ export default {
   gap: 10px;
 }
 .login-input {
-  flex: 1;
-
   border: none;
   border-radius: 15px;
   padding: 4px;
   font-weight: bolder;
-  color: black;
   text-align: center;
+}
+.user-name {
+  flex: 1;
 }
 </style>
