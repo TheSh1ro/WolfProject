@@ -2,7 +2,9 @@
 export default {
   data() {
     return {
-      userExpanded: false
+      userExpanded: false,
+      userLogin: null,
+      userPassword: null
     }
   },
   methods: {
@@ -24,27 +26,17 @@ export default {
       <p class="logo-text">Climbing</p>
       <p class="logo-text">Elo</p>
     </RouterLink>
-    <div class="navbar">
-      <RouterLink class="navbar-button" to="/elojob">Serviços</RouterLink>
-      <RouterLink class="navbar-button" to="/account">Contas</RouterLink>
-      <RouterLink class="navbar-button" to="/login">Aulas</RouterLink>
-    </div>
     <div
       class="user"
       :class="{ expanded: this.userExpanded }"
       @click="userExpand()"
       @mouseleave="userHidden()"
     >
-      <div class="user-login">
-        <input v-show="userExpanded" type="text" placeholder="Usuário" />
-        <input v-show="userExpanded" type="text" placeholder="Senha" />
+      <img class="user-picture" src="https://cdn.onlinewebfonts.com/svg/img_454474.png" alt="" />
+      <div class="login-inputs">
+        <input class="login-input" type="text" placeholder="Usuário" v-model="userLogin" />
+        <input class="login-input" type="text" placeholder="Senha" v-model="userPassword" />
       </div>
-      <img
-        v-show="!userExpanded"
-        class="user-picture"
-        src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_640.png"
-        alt=""
-      />
     </div>
   </header>
 </template>
@@ -64,6 +56,7 @@ export default {
   position: relative;
   color: var(--blue);
 }
+
 .logo {
   display: flex;
   align-items: center;
@@ -86,34 +79,45 @@ export default {
   color: var(--blue);
 }
 
-.navbar {
-  display: flex;
-  gap: 1rem;
-}
-.navbar-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--blue);
-}
-.navbar-button:hover {
-  color: var(--purple);
-}
-
 .user {
   display: flex;
-  height: 100%;
+  align-items: center;
+
+  height: 10vh;
+  width: 10vh;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 1vh;
+  gap: 10px;
+
+  background: radial-gradient(circle, rgba(200, 105, 255, 1) 0%, rgba(131, 181, 255, 1) 100%);
+  transition: 0.5s ease;
+  position: relative;
+  overflow: hidden;
 }
 .user-picture {
+  left: 0px;
   height: 100%;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  filter: hue-rotate(100deg);
+  filter: invert();
 }
-.user:hover {
-  color: var(--blue);
-}
+
 .user.expanded {
-  color: red;
+  width: 40vh;
+}
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 10px;
+}
+.login-input {
+  flex: 1;
+
+  border: none;
+  border-radius: 15px;
+  padding: 4px;
+  font-weight: bolder;
+  color: black;
+  text-align: center;
 }
 </style>
